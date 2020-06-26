@@ -5,10 +5,9 @@ public class Juego {
     private ArrayList temasElegidos;
     private ArrayList preguntasSeleccionadas;
 
-    public Juego(ArrayList<Tema> temasSeleccionados) {
+    public Juego(ArrayList<Tema> temasSeleccionados, ArrayList<Pregunta> preguntasAleatorias) {
         this.temasElegidos = temasSeleccionados;
-        this.preguntasSeleccionadas = new ArrayList<Pregunta>();
-        //TODO: Ejecutar metodo que trae preguntas de los temas seleccionados (quiza va en Sistema y aca se trae el array listo).
+        this.preguntasSeleccionadas = preguntasAleatorias;
     }
 
     public ArrayList getTemasElegidos() {

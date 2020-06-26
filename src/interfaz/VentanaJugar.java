@@ -1,6 +1,8 @@
 package interfaz;
 import dominio.*;
-import javax.swing.DefaultListModel; 
+import javax.swing.DefaultListModel;
+import java.util.*;
+import javax.swing.JOptionPane;
 public class VentanaJugar extends javax.swing.JFrame {
 
     public VentanaJugar(Sistema sistema) {
@@ -43,6 +45,11 @@ public class VentanaJugar extends javax.swing.JFrame {
         pnlJugar.setLayout(null);
 
         btnFlashCards.setText("FLASHCARDS");
+        btnFlashCards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFlashCardsActionPerformed(evt);
+            }
+        });
         pnlJugar.add(btnFlashCards);
         btnFlashCards.setBounds(190, 370, 173, 51);
 
@@ -117,6 +124,24 @@ public class VentanaJugar extends javax.swing.JFrame {
         lstListaTemas.revalidate();
         lstListaElegidos.revalidate();
     }//GEN-LAST:event_btnQuitarTemaActionPerformed
+
+    private void btnFlashCardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFlashCardsActionPerformed
+        ArrayList<Tema> temasElegidos = new ArrayList<Tema>();
+        for (int i = 0; i < modeloListaElegidos.getSize(); i++) {
+            temasElegidos.add(modelo.getTema(modeloListaElegidos.getElementAt(i).toString()));
+        }
+        if (temasElegidos.isEmpty()) {
+            System.out.println("Lista Vacia");
+        }else{
+            try{
+            FlashCards flashCards = new FlashCards(temasElegidos, modelo.darPreguntas(temasElegidos, Integer.parseInt(JOptionPane.showInputDialog(this,"Ingrese con cuantas preguntas quiere jugar:"))));
+            VentanaFlashCards vntFlashCards = new VentanaFlashCards(flashCards);
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Debe ingresar un número", "Error", 0);
+            }
+}
+
+    }//GEN-LAST:event_btnFlashCardsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

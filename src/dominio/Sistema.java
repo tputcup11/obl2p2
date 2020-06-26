@@ -116,9 +116,28 @@ public class Sistema implements Serializable {
     
     public ArrayList<Pregunta> darPreguntas(ArrayList<Tema> temasSeleccionados, int cantPreguntas){
         Random numero = new Random();
+        
+        ArrayList<Pregunta> listaPreguntasTemas = new ArrayList<Pregunta>();
         for (Tema tema : temasSeleccionados) {
-            
+            for(Pregunta preg : getListaPreguntas()){
+                if(preg.getTema().equals(tema)){
+                    listaPreguntasTemas.add(preg);
+                }
+            }
         }
+        
+        if(listaPreguntasTemas.size() < cantPreguntas){
+            return listaPreguntasTemas;
+        }else{
+            int index = numero.nextInt(listaPreguntasTemas.size() - 1);
+            int pregAEliminar = listaPreguntasTemas.size() - cantPreguntas;
+            for (int i = 0; i < pregAEliminar; i++){
+                listaPreguntasTemas.remove(index);
+                index = numero.nextInt(listaPreguntasTemas.size() - 1);
+            }
+            return listaPreguntasTemas;
+        }
+        
         
     }
 }
