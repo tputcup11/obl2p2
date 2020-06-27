@@ -2,19 +2,19 @@ package dominio;
 import java.util.ArrayList;
 
 public class Juego {
-    private ArrayList temasElegidos;
-    private ArrayList preguntasSeleccionadas;
+    private ArrayList<Tema> temasElegidos;
+    private ArrayList<Pregunta> preguntasSeleccionadas;
 
     public Juego(ArrayList<Tema> temasSeleccionados, ArrayList<Pregunta> preguntasAleatorias) {
         this.temasElegidos = temasSeleccionados;
         this.preguntasSeleccionadas = preguntasAleatorias;
     }
 
-    public ArrayList getTemasElegidos() {
+    public ArrayList<Tema> getTemasElegidos() {
         return temasElegidos;
     }
     
-    public ArrayList getPreguntas() {
+    public ArrayList<Pregunta> getPreguntas() {
         return preguntasSeleccionadas;
     }
 }

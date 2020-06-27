@@ -131,13 +131,14 @@ public class VentanaJugar extends javax.swing.JFrame {
             temasElegidos.add(modelo.getTema(modeloListaElegidos.getElementAt(i).toString()));
         }
         if (temasElegidos.isEmpty()) {
-            System.out.println("Lista Vacia");
+            JOptionPane.showMessageDialog(this, "Por favor, elija un tema", "Error", 0);
         }else{
             try{
             FlashCards flashCards = new FlashCards(temasElegidos, modelo.darPreguntas(temasElegidos, Integer.parseInt(JOptionPane.showInputDialog(this,"Ingrese con cuantas preguntas quiere jugar:"))));
             VentanaFlashCards vntFlashCards = new VentanaFlashCards(flashCards);
+            vntFlashCards.setVisible(true);
             }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(this, "Debe ingresar un número", "Error", 0);
+                JOptionPane.showMessageDialog(this, "Debe ingresar un numero", "Error", 0);
             }
 }
 
