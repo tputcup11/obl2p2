@@ -15,7 +15,7 @@ public class FlashCards extends Juego{
         return this.preguntaActual;
     }
     
-    public void setPreguntaActual(Pregunta pregunta){
+    private void setPreguntaActual(Pregunta pregunta){
         this.preguntaActual = pregunta;
     }
     

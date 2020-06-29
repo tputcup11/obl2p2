@@ -54,6 +54,11 @@ public class VentanaJugar extends javax.swing.JFrame {
         btnFlashCards.setBounds(190, 370, 173, 51);
 
         btnMemory.setText("MEMORY");
+        btnMemory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMemoryActionPerformed(evt);
+            }
+        });
         pnlJugar.add(btnMemory);
         btnMemory.setBounds(370, 370, 173, 51);
 
@@ -131,7 +136,7 @@ public class VentanaJugar extends javax.swing.JFrame {
             temasElegidos.add(modelo.getTema(modeloListaElegidos.getElementAt(i).toString()));
         }
         if (temasElegidos.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, elija un tema", "Error", 0);
+            JOptionPane.showMessageDialog(this, "Por favor, elija al menos un tema", "Error", 0);
         }else{
             try{
             FlashCards flashCards = new FlashCards(temasElegidos, modelo.darPreguntas(temasElegidos, Integer.parseInt(JOptionPane.showInputDialog(this,"Ingrese con cuantas preguntas quiere jugar:"))));
@@ -143,6 +148,25 @@ public class VentanaJugar extends javax.swing.JFrame {
 }
 
     }//GEN-LAST:event_btnFlashCardsActionPerformed
+
+    private void btnMemoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemoryActionPerformed
+        ArrayList<Tema> temasElegidos = new ArrayList<Tema>();
+        for (int i = 0; i < modeloListaElegidos.getSize(); i++) {
+            temasElegidos.add(modelo.getTema(modeloListaElegidos.getElementAt(i).toString()));
+        }
+        if (temasElegidos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, elija al menos un tema", "Error", 0);
+        }else{
+            try{
+                Memory memory = new Memory(temasElegidos, modelo.darPreguntas(temasElegidos,6));
+                VentanaMemory vntMemory = new VentanaMemory(memory);
+                vntMemory.setVisible(true);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Se debe contar con al menos 6 preguntas entre los temas seleccionados", "Error", 0);
+            }
+
+        }
+    }//GEN-LAST:event_btnMemoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

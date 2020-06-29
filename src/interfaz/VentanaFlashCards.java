@@ -5,6 +5,11 @@ public class VentanaFlashCards extends javax.swing.JFrame {
     public VentanaFlashCards(FlashCards flashCards) {
         modeloJuego = flashCards;
         initComponents();
+        title = "";
+        for (Tema tema : modeloJuego.getTemasElegidos()) {
+            title += tema.getNombre() + " ";
+        }
+        this.setTitle(title);
         this.update();
     }
     
@@ -101,4 +106,5 @@ public class VentanaFlashCards extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
     private FlashCards modeloJuego;
+    private String title;
 }
